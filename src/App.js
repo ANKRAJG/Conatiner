@@ -7,7 +7,9 @@ import {
 
 import Progress from './components/Progress';
 import Header from './components/Header';
+import NewRoute from './components/NewRoute';
 
+const AuthLazy = lazy(() => import('./components/AuthApp'));
 const EventsLazy = lazy(() => import('./components/EventsApp'));
 
 const generateClassName = createGenerateClassName({
@@ -27,6 +29,8 @@ export default () => {
           />
           <Suspense fallback={<Progress />}>
             <Switch>
+              <Route path="/new-route" component={NewRoute} />
+              <Route path="/auth" component={AuthLazy} />
               <Route path="/" component={EventsLazy} />
             </Switch>
           </Suspense>

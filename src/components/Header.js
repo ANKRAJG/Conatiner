@@ -116,9 +116,19 @@ export default function Header({ isSignedIn, onSignOut }) {
             className={classes.link}
             onClick={onClick.bind(null, '/add-event')}
             component={RouterLink}
-            to='/add-event'
+            to='/auth/signin'
           >
-            Add Event
+            Sign In
+          </Button>
+          <Button
+            color="primary"
+            variant="outlined"
+            className={classes.link}
+            onClick={onClick.bind(null, '/new-route')}
+            component={RouterLink}
+            to='/new-route'
+          >
+            React Route
           </Button>
         </Toolbar>
       </AppBar>

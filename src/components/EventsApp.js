@@ -7,11 +7,22 @@ export default () => {
   const history = useHistory();
 
   useEffect(() => {
-    const { onParentNavigate } = mount(ref.current);
+    const onNavigate = ({ pathname: nextPathname }) => {
+      const { pathname } = history.location;
+
+      if (pathname !== nextPathname) {
+        history.push(nextPathname);
+      }
+    }
+
+    const { onParentNavigate } = mount(ref.current, {
+      onNavigate
+    });
+
     history.listen(onParentNavigate);
   }, []);
 
-  return (<div ref={ref}>
+  return (<div id="_angularjs-dev-root" ref={ref}>
     <div>
         <ng-view></ng-view>
     </div>
